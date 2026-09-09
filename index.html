@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Décor & Co · Bleu Blanc Noir</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8faff;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    /* ---------- COULEURS ---------- */
+    :root {
+      --bleu-fonce: #0b2b4a;
+      --bleu-moyen: #1f4a7a;
+      --bleu-clair: #d9e6f2;
+      --blanc: #ffffff;
+      --noir: #121212;
+      --gris-fume: #f0f4fc;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: var(--blanc);
+      border-bottom: 2px solid var(--bleu-clair);
+      box-shadow: 0 4px 12px rgba(11, 43, 74, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--bleu-fonce);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--noir);
+      font-size: 2rem;
+    }
+
+    .logo span {
+      color: var(--noir);
+      font-weight: 300;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2.2rem;
+      font-weight: 500;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--noir);
+      font-size: 1.05rem;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.3rem;
+    }
+
+    nav a:hover {
+      color: var(--bleu-moyen);
+      border-bottom-color: var(--bleu-moyen);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.3rem;
+      color: var(--noir);
+    }
+
+    .nav-icons i {
+      cursor: default;
+      transition: transform 0.2s;
+    }
+
+    .nav-icons i:hover {
+      transform: scale(1.1);
+      color: var(--bleu-moyen);
+    }
+
+    /* ---------- BANNIÈRE ---------- */
+    .hero {
+      background: linear-gradient(145deg, var(--bleu-fonce) 0%, var(--bleu-moyen) 100%);
+      color: var(--blanc);
+      padding: 4rem 0;
+      margin: 2rem 0 3rem 0;
+      border-radius: 2.5rem;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(11, 43, 74, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 i {
+      color: var(--blanc);
+      margin-right: 0.6rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0.5rem auto 0;
+      border-top: 2px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+      display: inline-block;
+    }
+
+    .hero .badge {
+      background: var(--noir);
+      color: var(--blanc);
+      padding: 0.3rem 1.8rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-top: 1.2rem;
+    }
+
+    /* ---------- SECTION IMAGES LOCALES ---------- */
+    .local-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 3rem 0;
+    }
+
+    .local-card {
+      background: var(--blanc);
+      border-radius: 1.8rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--bleu-clair);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .local-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(11, 43, 74, 0.12);
+    }
+
+    .local-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 3px solid var(--bleu-moyen);
+    }
+
+    .local-card-content {
+      padding: 1.2rem 1.5rem 1.5rem;
+    }
+
+    .local-card-content h3 {
+      color: var(--bleu-fonce);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .local-card-content p {
+      color: #3d3d3d;
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    .local-tag {
+      display: inline-block;
+      background: var(--bleu-clair);
+      color: var(--bleu-fonce);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- GRILLE PRODUITS ---------- */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--bleu-fonce);
+      border-left: 6px solid var(--noir);
+      padding-left: 1.2rem;
+      margin: 3rem 0 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-title i {
+      color: var(--noir);
+      font-size: 2rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2.2rem;
+      margin-bottom: 4rem;
+    }
+
+    .product-card {
+      background: var(--blanc);
+      border-radius: 1.8rem;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+      border: 1px solid var(--bleu-clair);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 35px rgba(11, 43, 74, 0.12);
+      border-color: var(--bleu-moyen);
+    }
+
+    .product-image {
+      height: 220px;
+      background-color: var(--gris-fume);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      color: var(--bleu-fonce);
+      border-bottom: 2px solid var(--bleu-clair);
+      background: linear-gradient(135deg, #eef4fc 0%, #dce6f2 100%);
+    }
+
+    .product-image i {
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.05));
+    }
+
+    .product-info {
+      padding: 1.5rem 1.2rem 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--noir);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #3d3d3d;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .product-tag {
+      display: inline-block;
+      background: var(--bleu-clair);
+      color: var(--bleu-fonce);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--blanc);
+    }
+
+    .btn-detail {
+      background: var(--noir);
+      color: var(--blanc);
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: default;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      width: 100%;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-detail i {
+      font-size: 0.9rem;
+    }
+
+    .btn-detail:hover {
+      background: var(--bleu-moyen);
+      transform: scale(0.98);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--noir);
+      color: var(--blanc);
+      padding: 3rem 0 1.5rem;
+      margin-top: 3rem;
+      border-top: 4px solid var(--bleu-moyen);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--bleu-clair);
+      letter-spacing: 0.3px;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #cccccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--blanc);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #a0a0a0;
+    }
+
+    .footer-social i {
+      font-size: 1.4rem;
+      margin-left: 1rem;
+      color: #b0b0b0;
+      transition: color 0.2s;
+      cursor: default;
+    }
+
+    .footer-social i:hover {
+      color: var(--blanc);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 800px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-icons {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero {
+        padding: 3rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .local-images {
+        grid-template-columns: 1fr;
+      }
+
+      .local-card img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .product-image {
+        height: 160px;
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <i class="fas fa-cube"></i> Décor<span>&</span>Co
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Collection</a></li>
+        <li><a href="#">Inspiration</a></li>
+        <li><a href="#">À propos</a></li>
+      </ul>
+    </nav>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="far fa-heart"></i>
+      <i class="far fa-user"></i>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-sparkles"></i> Élégance intemporelle</h1>
+    <p>Objets décoratifs d'exception · Bleu, blanc, noir</p>
+    <div class="badge"><i class="fas fa-palette"></i> &nbsp; Nouvelle saison</div>
+  </div>
+</div>
+
+<!-- ========== SECTION : 2 IMAGES LOCALES ========== -->
+<div class="container">
+  <div class="section-title" style="border-left-color: var(--bleu-moyen);">
+    <i class="fas fa-image"></i> Nos inspirations
+  </div>
+
+  <div class="local-images">
+    <!-- IMAGE 1 : remplacez "image1.jpg" par le chemin de votre fichier -->
+    <div class="local-card">
+      <img src="C:\Users\DECOCI\OneDrive\DECOCI SCAN - Fichiers de_\@2025 TOUT FICHER\CONVOCATIONS\IMPOTS\Bureau\img\img1.jpg" alt="Décoration bleue et blanche" />
+      <div class="local-card-content">
+        <h3>Harmonie bleue</h3>
+        <p>Une composition minimaliste aux reflets profonds.</p>
+        <span class="local-tag">Bleu · Blanc</span>
+      </div>
+    </div>
+
+    <!-- IMAGE 2 : remplacez "bbbb" par le chemin de votre fichier -->
+    <div class="local-card">
+      <img src="DECOCI\OneDrive\DECOCI SCAN - Fichiers de_\@2025 TOUT FICHER\CONVOCATIONS\IMPOTS\Bureau\img\img2" alt="Objet décoratif noir et blanc" />
+      <div class="local-card-content">
+        <h3>Contrastes graphiques</h3>
+        <p>Le noir et blanc dans une mise en scène épurée.</p>
+        <span class="local-tag">Noir · Blanc</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== GRILLE PRODUITS ========== -->
+<div class="container">
+  <div class="section-title">
+    <i class="fas fa-crown"></i> Nos pièces favorites
+  </div>
+
+  <div class="product-grid">
+    <!-- Carte 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-vase"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Bleu profond</span>
+        <div class="product-name">Vase Zénith</div>
+        <div class="product-desc">Céramique émaillée, finition mate et reflets bleu nuit.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-candle-holder"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Noir & blanc</span>
+        <div class="product-name">Bougeoir duo</div>
+        <div class="product-desc">Ligne épurée, contraste graphique en porcelaine.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-fan"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Bleu ciel</span>
+        <div class="product-name">Éventail mural</div>
+        <div class="product-desc">Structure en bois laqué, motif inspiré des vagues.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-mask"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Noir profond</span>
+        <div class="product-name">Masque abstrait</div>
+        <div class="product-desc">Sculpture murale en résine, finition veloutée.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 5 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Blanc cassé</span>
+        <div class="product-name">Horloge solaire</div>
+        <div class="product-desc">Cadran en marbre blanc, aiguilles noires.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 6 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-gem"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Bleu minéral</span>
+        <div class="product-name">Géode lumineuse</div>
+        <div class="product-desc">Cristaux naturels sur socle noir, effet irisant.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 7 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-flower"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Noir & bleu</span>
+        <div class="product-name">Composition florale</div>
+        <div class="product-desc">Fleurs séchées dans un cache-pot en céramique bleue.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+
+    <!-- Carte 8 -->
+    <div class="product-card">
+      <div class="product-image">
+        <i class="fas fa-chess-queen"></i>
+      </div>
+      <div class="product-info">
+        <span class="product-tag">Blanc pur</span>
+        <div class="product-name">Pion design</div>
+        <div class="product-desc">Pièce d'échecs XXL en résine, effet marbre.</div>
+        <button class="btn-detail"><i class="fas fa-plus-circle"></i> Voir le produit</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 2rem 0 3rem;">
+    <span style="background: var(--bleu-clair); color: var(--bleu-fonce); padding: 0.7rem 2.5rem; border-radius: 60px; font-weight: 500; border: 1px solid var(--blanc);">
+      <i class="fas fa-arrow-right" style="margin-right: 0.6rem;"></i> Collection complète disponible en boutique
+    </span>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Décor & Co</h4>
+        <p>Bleu · Blanc · Noir</p>
+        <p>L’art de la décoration intemporelle.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Liens utiles</h4>
+        <a href="#">Livraison</a>
+        <a href="#">Retours</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Inspiration</h4>
+        <a href="#">Notre univers</a>
+        <a href="#">Conseils déco</a>
+        <a href="#">Lookbook</a>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <a href="#">Mentions légales</a>
+        <a href="#">CGV</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Décor & Co · Design épuré</span>
+      <div class="footer-social">
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest"></i>
+        <i class="fab fa-facebook-f"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
